@@ -12,7 +12,7 @@ model = genanki.Model(
     "Sentence Mining Model",
     fields=[
         {"name": "Kanji"},
-        {"name": "Furigana"},
+        {"name": "Pronunciation"},
         {"name": "Romaji"},
         {"name": "Meaning"},
     ],
@@ -20,7 +20,7 @@ model = genanki.Model(
         {
             "name": "Card",
             "qfmt": "{{Kanji}}",
-            "afmt": '{{FrontSide}}<hr id="answer">{{Furigana}}<br><br>{{Romaji}}<br><br>{{Meaning}}',
+            "afmt": '{{FrontSide}}<hr id="answer">{{Pronunciation}}<br><br>{{Romaji}}<br><br>{{Meaning}}',
         }
     ],
     css=css_content,
@@ -33,7 +33,12 @@ def create_deck(deck_name: str, analyzed_lines: list, output_file: str):
     for data in analyzed_lines:
         note = genanki.Note(
             model=model,
-            fields=[data["kanji"], data["furigana"], data["romaji"], data["meanings"]],
+            fields=[
+                data["kanji"],
+                data["pronunciation"],
+                data["romaji"],
+                data["meanings"],
+            ],
         )
         deck.add_note(note)
 

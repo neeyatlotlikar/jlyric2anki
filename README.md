@@ -81,9 +81,9 @@ KIMI NO SHIRANAI MONOGATARI
 
 ## 🧾 TODO (Coming Soon)
 
-- Add audio support from song files
+- Add audio support using TTS
 
-- Improve furigana display using `<ruby>`
+- Add sentence translation for a better sentence sense
 
 ---
 

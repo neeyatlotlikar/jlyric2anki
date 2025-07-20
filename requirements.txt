@@ -20,6 +20,8 @@ genanki==0.13.1
     # via -r requirements.in
 idna==3.10
     # via requests
+jaconv==0.4.0
+    # via -r requirements.in
 jamdict==0.1a11.post2
     # via -r requirements.in
 jamdict-data==1.5

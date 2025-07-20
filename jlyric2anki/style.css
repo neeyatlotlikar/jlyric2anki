@@ -1,0 +1,24 @@
+.card {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.kanji {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.furigana {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.romaji {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.meaning {
+    font-size: 20px;
+}

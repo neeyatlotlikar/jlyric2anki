@@ -24,9 +24,11 @@ def analyze_line(line: str):
             meaning = ", ".join(glossary)
             meanings.append(f"{surface} ({base}): {meaning}")
 
+    kanji_line = f"<ruby>{line.strip()}<rt>{romaji_line.strip()}</rt></ruby> "
+
     return {
-        "kanji": line.strip(),
+        "kanji": kanji_line.strip(),
         "furigana": furigana_line.strip(),
         "romaji": romaji_line.strip(),
-        "meanings": "\n".join(meanings),
+        "meanings": "<br>".join(meanings),
     }

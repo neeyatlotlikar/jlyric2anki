@@ -1,5 +1,12 @@
 import genanki
+import os
 
+# Read CSS from file
+with open(os.path.join(os.path.dirname(__file__), "style.css"), "r") as css_file:
+    css_content = css_file.read()
+
+
+# Define the Anki model for sentence mining
 model = genanki.Model(
     1607392319,
     "Sentence Mining Model",
@@ -13,9 +20,10 @@ model = genanki.Model(
         {
             "name": "Card",
             "qfmt": "{{Kanji}}",
-            "afmt": '{{FrontSide}}<hr id="answer">{{Furigana}}<br>{{Romaji}}<br>{{Meaning}}',
+            "afmt": '{{FrontSide}}<hr id="answer">{{Furigana}}<br><br>{{Romaji}}<br><br>{{Meaning}}',
         }
     ],
+    css=css_content,
 )
 
 

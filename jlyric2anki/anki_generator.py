@@ -1,5 +1,7 @@
-import genanki
 import os
+from textwrap import dedent
+
+import genanki
 
 # Read CSS from file
 with open(os.path.join(os.path.dirname(__file__), "style.css"), "r") as css_file:
@@ -15,19 +17,25 @@ model = genanki.Model(
         {"name": "Pronunciation"},
         {"name": "Romaji"},
         {"name": "Meaning"},
+        {"name": "Source"},
     ],
     templates=[
         {
             "name": "Card",
-            "qfmt": "{{Kanji}}",
-            "afmt": '{{FrontSide}}<hr id="answer">{{Pronunciation}}<br><br>{{Romaji}}<br><br>{{Meaning}}',
+            "qfmt": "<div class='kanji'>{{Kanji}}</div>",
+            "afmt": dedent(
+                """{{FrontSide}}<hr id="answer">{{Pronunciation}}<br><br>
+                <div class="romaji">{{Romaji}}</div><br><br>
+                {{Meaning}}<br><br>
+                <div class="source">{{Source}}</div>"""
+            ).strip(),
         }
     ],
     css=css_content,
 )
 
 
-def create_deck(deck_name: str, analyzed_lines: list, output_file: str):
+def create_deck(deck_name: str, analyzed_lines: list, output_file: str, source: str):
     deck = genanki.Deck(2059400110, deck_name)
 
     for data in analyzed_lines:
@@ -38,6 +46,7 @@ def create_deck(deck_name: str, analyzed_lines: list, output_file: str):
                 data["pronunciation"],
                 data["romaji"],
                 data["meanings"],
+                source,
             ],
         )
         deck.add_note(note)

@@ -5,18 +5,14 @@
 }
 
 .kanji {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.pronunciation {
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .romaji {
-    font-size: 10px;
+    font-size: 15px;
 }
 
-.meaning {
-    font-size: 20px;
+.source {
+    font-size: 12px;
+    color: #888;
 }

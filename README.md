@@ -52,7 +52,7 @@ Place your Japanese lyrics in lyrics.txt, one sentence per line.
 Then run:
 
 ```bash
-python cli.py generate-deck lyrics.txt --output-file mydeck.apkg --deck-name "My Jpop Deck"
+python cli.py generate-deck lyrics.txt --output-file mydeck.apkg --deck-name "My Jpop Deck" --source "From: Song Name by Artist"
 ```
 
 This will output an Anki deck file like `mydeck.apkg`.

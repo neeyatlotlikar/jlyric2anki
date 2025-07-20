@@ -14,6 +14,9 @@ def generate_deck(
         "lyrics_deck.apkg", help="Output Anki deck filename"
     ),
     deck_name: str = typer.Option("Japanese Lyrics Deck", help="Name of the Anki deck"),
+    source: str = typer.Option(
+        "Lyrics", help="Source of the lyrics (e.g., 'Lyrics', 'Song', 'Album', etc.)"
+    ),
 ):
     if not lyrics_path.exists():
         typer.echo("Lyrics file not found!")
@@ -26,7 +29,7 @@ def generate_deck(
         "Analyzing lyrics...", lambda: [analyze_line(line) for line in lines]
     )
     show_loader(
-        "Generating Anki deck...", create_deck, deck_name, analyzed, output_file
+        "Generating Anki deck...", create_deck, deck_name, analyzed, output_file, source
     )
     typer.echo(f"Anki deck created: {output_file}")
 

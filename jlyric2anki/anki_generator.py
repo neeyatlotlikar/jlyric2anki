@@ -24,9 +24,10 @@ model = genanki.Model(
             "name": "Card",
             "qfmt": "<div class='kanji'>{{Kanji}}</div>",
             "afmt": dedent(
-                """{{FrontSide}}<hr id="answer">{{Pronunciation}}<br><br>
-                <div class="romaji">{{Romaji}}</div><br><br>
-                {{Meaning}}<br><br>
+                """{{FrontSide}}<hr id="answer">
+                <div class="pronunciation">{{Pronunciation}}</div><br>
+                <div class="romaji">{{Romaji}}</div><br>
+                <div class="meanings">{{Meaning}}</div><br>
                 <div class="source">{{Source}}</div>"""
             ).strip(),
         }

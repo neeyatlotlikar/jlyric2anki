@@ -51,7 +51,8 @@ def is_kana(text):
 
 def find_hiragana(text):
     # Regex pattern for Hiragana
-    hiragana_pattern = re.compile(r"[\u3040-\u30FF]")
+    # hiragana_pattern = re.compile(r"[\u3040-\u30FF]")
+    hiragana_pattern = re.compile(r"[ぁ-ゔゞ゛゜ー]")
     return hiragana_pattern.findall(text)
 
 
@@ -62,7 +63,8 @@ def is_hiragana(text):
 
 def find_katakana(text):
     # Regex pattern for Katakana
-    katakana_pattern = re.compile(r"[\u30A0-\u30FF]")
+    # katakana_pattern = re.compile(r"[\u30A0-\u30FF]")
+    katakana_pattern = re.compile(r"[ァ-・ヽヾ゛゜ー]")
     return katakana_pattern.findall(text)
 
 

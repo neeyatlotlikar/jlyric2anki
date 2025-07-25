@@ -21,7 +21,13 @@ jlyric2anki/
 ├── jlyric2anki/
 │ ├── analyzer.py # Tokenization, furigana, meaning
 │ ├── anki_generator.py # Anki deck creation
-│ └── utils.py # Loader function (rich spinner)
+│ |── utils.py # Loader function (rich spinner)
+| |── translator.py # Sentence Translation
+| └── style.css # Styling for Anki template
+├── tests/
+│ ├── test_analyzer.py # Test cases for analyzer.py
+│ |── test_utils.py # Test cases for utils.py
+| └── test_translator.py
 ├── cli.py # CLI entry point using Typer
 ├── lyrics.txt # Input: Japanese lyrics (Kanji)
 ├── requirements.txt # Dependencies
@@ -39,8 +45,13 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-# Note: The full version of UniDic (internally used package) requires a separate download step
+# Notes:
+# The full version of UniDic (internally used package) requires a separate download step
 python -m unidic download
+
+# Run once for argostranslate setup
+python -c "from jlyric2anki.translator import setup_argos_translate; setup_argos_translate()"
+
 ```
 
 ---
@@ -88,8 +99,6 @@ sayonara yori zutto taisetsu na
 
 - Add audio support using TTS
 
-- Add sentence translation for a better sentence sense
-
 ---
 
 ## 🧠 Tech Stack
@@ -105,3 +114,5 @@ sayonara yori zutto taisetsu na
 - `rich`: CLI spinner/loader
 
 - `jaconv`: Japanese Converter (interconverter for Hiragana, Katakana and more)
+
+- `argostranslate`: Sentence Translation

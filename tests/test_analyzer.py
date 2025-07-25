@@ -49,7 +49,7 @@ def test_analyze_line():
     assert result["kanji"] == ""
     assert result["pronunciation"] == ""
     assert result["romaji"] == ""
-    assert result["meanings"] == ""
+    assert result["meanings"] == "<br><br>"
 
     # Test with a line containing special characters
     line = "Hello, world! @2023"

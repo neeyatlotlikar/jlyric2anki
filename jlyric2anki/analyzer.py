@@ -1,6 +1,8 @@
 import fugashi
-from jaconv import kata2hira, kata2alphabet
+from jaconv import kata2alphabet, kata2hira
 from jamdict import Jamdict
+
+from jlyric2anki.translator import translate_sentence
 from .utils import is_kanji
 
 
@@ -34,9 +36,11 @@ def analyze_line(line: str):
             meaning = ", ".join(glossary)
             meanings.append(f"{surface} ({base}): {meaning}")
 
+    full_translation = translate_sentence(line)
+
     return {
         "kanji": sentence.strip(),
         "pronunciation": pronunciation.strip(),
         "romaji": romaji_line.strip(),
-        "meanings": "<br>".join(meanings),
+        "meanings": f"{full_translation}<br><br>" + "<br>".join(meanings),
     }

@@ -30,6 +30,8 @@ genanki==0.13.1
     # via -r requirements.in
 idna==3.10
     # via requests
+jaconv==0.4.0
+    # via -r requirements.in
 jamdict==0.1a11.post2
     # via -r requirements.in
 jamdict-data==1.5
@@ -48,7 +50,7 @@ mpmath==1.3.0
     # via sympy
 networkx==3.5
     # via torch
-numpy==2.3.1
+numpy==2.3.2
     # via
     #   ctranslate2
     #   stanza
@@ -109,7 +111,7 @@ requests==2.32.4
     # via
     #   stanza
     #   unidic
-rich==14.0.0
+rich==14.1.0
     # via typer
 sacremoses==0.0.53
     # via argostranslate

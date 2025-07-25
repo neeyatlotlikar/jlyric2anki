@@ -143,4 +143,4 @@ More important
 
 - `argostranslate`: Sentence Translation
 
-- `gtts`: Generate audio from text (Text-to-Speech)
+- `gTTS`: Generate audio from text (Text-to-Speech)

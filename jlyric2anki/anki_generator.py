@@ -1,5 +1,6 @@
 import os
 from textwrap import dedent
+from pathlib import Path
 
 import genanki
 
@@ -36,14 +37,22 @@ model = genanki.Model(
 )
 
 
-def create_deck(deck_name: str, analyzed_lines: list, output_file: str, source: str):
+def create_deck(
+    deck_name: str,
+    analyzed_lines: list,
+    output_file: str,
+    source: str,
+    audio_files: list,
+):
     deck = genanki.Deck(2059400110, deck_name)
+    package = genanki.Package(deck)
 
-    for data in analyzed_lines:
+    for i, data in enumerate(analyzed_lines):
+        audio_tag = f"[sound:{Path(audio_files[i]).name}]" if audio_files else ""
         note = genanki.Note(
             model=model,
             fields=[
-                data["kanji"],
+                f"{audio_tag}<br><br>{data['kanji']}",
                 data["pronunciation"],
                 data["romaji"],
                 data["meanings"],
@@ -52,4 +61,7 @@ def create_deck(deck_name: str, analyzed_lines: list, output_file: str, source: 
         )
         deck.add_note(note)
 
-    genanki.Package(deck).write_to_file(output_file)
+    if audio_files:
+        package.media_files = audio_files
+
+    package.write_to_file(output_file)

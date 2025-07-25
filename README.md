@@ -1,4 +1,4 @@
-# 🎵 jlyric2anki *(In-Progress)*
+# 🎵 jlyric2anki
 
 A CLI tool that converts Japanese song lyrics (in Kanji) into **Anki flashcards** for sentence mining and vocabulary learning.
 
@@ -7,9 +7,17 @@ A CLI tool that converts Japanese song lyrics (in Kanji) into **Anki flashcards*
 ## ✨ Features
 
 - 🧠 Sentence-level mining from Japanese lyrics
+
 - 📖 Auto-generates furigana, romaji, and word meanings
+
+- 🌐 Full-sentence translations using **offline FOSS translator** (Argos Translate)
+
+- 🔊 TTS audio generation (FOSS-supported, `gTTS`)
+
 - 🗂 Outputs an `.apkg` file ready for Anki import
+
 - 🖥 Simple CLI interface
+
 - ⚙️ Uses MeCab (`fugashi`) and `jamdict` for analysis
 
 ---
@@ -21,15 +29,16 @@ jlyric2anki/
 ├── jlyric2anki/
 │ ├── analyzer.py # Tokenization, furigana, meaning
 │ ├── anki_generator.py # Anki deck creation
-│ |── utils.py # Loader function (rich spinner)
+│ ├── audio_generator.py # Text-to-Speech
+│ |── utils.py # Various utility functions
 | |── translator.py # Sentence Translation
 | └── style.css # Styling for Anki template
 ├── tests/
 │ ├── test_analyzer.py # Test cases for analyzer.py
 │ |── test_utils.py # Test cases for utils.py
-| └── test_translator.py
+│ |── test_audio_generator.py # Test cases for TTS
+| └── test_translator.py # Test cases for translator.py
 ├── cli.py # CLI entry point using Typer
-├── lyrics.txt # Input: Japanese lyrics (Kanji)
 ├── requirements.txt # Dependencies
 └── README.md
 ```
@@ -70,21 +79,39 @@ This will output an Anki deck file like `mydeck.apkg`.
 
 ---
 
+## 🧾 Features in Action
+
+- ✅ Full sentence as flashcard
+
+- ✅ Furigana & Romaji auto-generated
+
+- ✅ Word-by-word definitions (via Jamdict)
+
+- ✅ Sentence translation (offline, via Argos Translate)
+
+- ✅ Audio generation (via gTTS)
+
+---
+
 ## 🛠 Example Output (Anki Card)
 
 Front:
 
-```scss
-                  たいせつ
+```text
 さよなら より ずっと 大切 な
 ```
 
+- Also displays furigana above the Kanji characters.
+- `たいせつ` shall be displayed atop of the characters `大切`, for example, to clarify their pronunciation.
+
 Back:
 
-```scss
+```text
 サヨナラ ヨリ ズット タイセツ ナ
 
 sayonara yori zutto taisetsu na
+
+More important
 
 さよなら (さようなら): farewell, adieu, goodbye, so long
 より (より): than
@@ -93,11 +120,10 @@ sayonara yori zutto taisetsu na
 な (だ): dui (one of the trigrams of the I Ching: swamp, west)
 ```
 
----
-
-## 🧾 TODO (Coming Soon)
-
-- Add audio support using TTS
+- Katakana pronunciation
+- Romaji pronunciation
+- Sentence Translation
+- Word-wise meanings
 
 ---
 
@@ -116,3 +142,5 @@ sayonara yori zutto taisetsu na
 - `jaconv`: Japanese Converter (interconverter for Hiragana, Katakana and more)
 
 - `argostranslate`: Sentence Translation
+
+- `gtts`: Generate audio from text (Text-to-Speech)

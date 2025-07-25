@@ -12,8 +12,9 @@ chevron==0.14.0
     # via genanki
 chirptext==0.1.2
     # via jamdict
-click==8.2.1
+click==8.1.8
     # via
+    #   gtts
     #   sacremoses
     #   typer
 ctranslate2==4.6.0
@@ -27,6 +28,8 @@ fsspec==2025.7.0
 fugashi==1.5.1
     # via -r requirements.in
 genanki==0.13.1
+    # via -r requirements.in
+gtts==2.5.4
     # via -r requirements.in
 idna==3.10
     # via requests
@@ -109,6 +112,7 @@ regex==2024.11.6
     # via sacremoses
 requests==2.32.4
     # via
+    #   gtts
     #   stanza
     #   unidic
 rich==14.1.0
